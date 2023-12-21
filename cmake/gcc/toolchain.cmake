@@ -1,0 +1,14 @@
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_SYSTEM_PROCESSOR arm)
+
+set(TOOLCHAIN_PREFIX arm-none-eabi-)
+
+if (${CMAKE_VERSION} VERSION_EQUAL "3.6.0" OR ${CMAKE_VERSION} VERSION_GREATER "3.6")
+    set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+else ()
+    set(CMAKE_EXE_LINKER_FLAGS_INIT "--specs=nosys.specs")
+endif ()
+
+set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc)
+
+set(CMAKE_C_FLAGS_DEBUG_INIT "-Wall -Wextra -Werror -g3 -Og")

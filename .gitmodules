@@ -4,3 +4,6 @@
 [submodule "modules/cmsis_stm32c0"]
 	path = modules/cmsis_stm32c0xx
 	url = https://github.com/STMicroelectronics/cmsis_device_c0.git
+[submodule "modules/hal_stm32c0xx"]
+	path = modules/hal_stm32c0xx
+	url = https://github.com/STMicroelectronics/stm32c0xx_hal_driver.git

@@ -1,3 +1,6 @@
 [submodule "modules/cmsis_core"]
 	path = modules/cmsis_core
 	url = https://github.com/ARM-software/CMSIS_5.git
+[submodule "modules/cmsis_stm32c0"]
+	path = modules/cmsis_stm32c0xx
+	url = https://github.com/STMicroelectronics/cmsis_device_c0.git

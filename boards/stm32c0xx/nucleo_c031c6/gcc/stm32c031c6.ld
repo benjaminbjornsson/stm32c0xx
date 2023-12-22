@@ -124,18 +124,6 @@ SECTIONS
     KEEP(*(.eh_frame*))
   } > FLASH
 
-  /*
-   * SG veneers:
-   * All SG veneers are placed in the special output section .gnu.sgstubs. Its start address
-   * must be set, either with the command line option �--section-start� or in a linker script,
-   * to indicate where to place these veneers in memory.
-   */
-/*
-  .gnu.sgstubs :
-  {
-    . = ALIGN(32);
-  } > FLASH
-*/
   .ARM.extab :
   {
     *(.ARM.extab* .gnu.linkonce.armextab.*)
@@ -157,12 +145,6 @@ SECTIONS
     LONG (__data_start__)
     LONG ((__data_end__ - __data_start__) / 4)
 
-    /* Add each additional data section here */
-/*
-    LONG (__etext2)
-    LONG (__data2_start__)
-    LONG ((__data2_end__ - __data2_start__) / 4)
-*/
     __copy_table_end__ = .;
   } > FLASH
 
@@ -219,28 +201,6 @@ SECTIONS
 
   } > RAM
 
-  /*
-   * Secondary data section, optional
-   *
-   * Remember to add each additional data section
-   * to the .copy.table above to asure proper
-   * initialization during startup.
-   */
-/*
-  __etext2 = ALIGN (4);
-
-  .data2 : AT (__etext2)
-  {
-    . = ALIGN(4);
-    __data2_start__ = .;
-    *(.data2)
-    *(.data2.*)
-    . = ALIGN(4);
-    __data2_end__ = .;
-
-  } > RAM2
-*/
-
   .bss :
   {
     . = ALIGN(4);
@@ -251,25 +211,6 @@ SECTIONS
     . = ALIGN(4);
     __bss_end__ = .;
   } > RAM AT > RAM
-
-  /*
-   * Secondary bss section, optional
-   *
-   * Remember to add each additional bss section
-   * to the .zero.table above to asure proper
-   * initialization during startup.
-   */
-/*
-  .bss2 :
-  {
-    . = ALIGN(4);
-    __bss2_start__ = .;
-    *(.bss2)
-    *(.bss2.*)
-    . = ALIGN(4);
-    __bss2_end__ = .;
-  } > RAM2 AT > RAM2
-*/
 
   .heap (COPY) :
   {

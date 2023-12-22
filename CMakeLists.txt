@@ -2,8 +2,10 @@ cmake_minimum_required(VERSION 3.27.7)
 
 project(stm32c0xx LANGUAGES C)
 
+set(SAMPLE_SOURCE_DIR "" CACHE STRING "Path to the sample source directory")
+
 include(boards/stm32c0xx/nucleo_c031c6/CMakeLists.txt)
-include(samples/blinky/CMakeLists.txt)
+include(${SAMPLE_SOURCE_DIR}/CMakeLists.txt)
 
 add_subdirectory(modules)
 
